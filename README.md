@@ -23,16 +23,19 @@ TaskFriend 是一套围绕检索增强生成（RAG）和大语言模型（LLM）
 
 ## 环境搭建步骤
 
-1. 创建虚拟环境：
+1. 创建虚拟环境（建议使用 Python 3.12，以满足 `ms-swift` 对 `numpy<2` 的依赖）：
 
    ```powershell
-   python -m venv .venv
-   .\.venv\Scripts\activate
+   py -3.12 -m venv taskfriend
+   # 若提示 “running scripts is disabled”，请先执行：
+   Set-ExecutionPolicy -Scope Process -ExecutionPolicy RemoteSigned
+   & .\taskfriend\Scripts\Activate.ps1
    ```
 
-2. 在仓库根目录安装依赖：
+2. 在仓库根目录安装依赖（先升级 pip，再安装 requirements）：
 
    ```powershell
+   python -m pip install --upgrade pip
    pip install -r requirements.txt
    ```
 
@@ -42,7 +45,13 @@ TaskFriend 是一套围绕检索增强生成（RAG）和大语言模型（LLM）
    Set-Location "LMP-C01 LLM Engineer (Professional)"
    ```
 
-4. 配置 DashScope API Key（首次或需要轮换时执行）：
+4. 验证关键依赖（`ms-swift` 安装后导入名为 `swift` 的模块）：
+
+   ```powershell
+   python -c "import swift, ragas, torch"
+   ```
+
+5. 配置 DashScope API Key（首次或需要轮换时执行）：
 
    ```powershell
    python config\load_key.py
