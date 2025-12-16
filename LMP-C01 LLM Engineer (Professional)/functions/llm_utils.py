@@ -7,7 +7,7 @@ from openai import OpenAI
 # Initialize client
 client = OpenAI(
     api_key=os.getenv("DASHSCOPE_API_KEY"),
-    base_url="https://dashscope-intl.aliyuncs.com/compatible-mode/v1",
+    base_url="https://dashscope.aliyuncs.com/compatible-mode/v1",
 )
 
 def get_qwen_stream_response(query, system_prompt="", temperature=0.5, top_p=0.9):

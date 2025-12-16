@@ -59,6 +59,11 @@ TaskFriend 是一套围绕检索增强生成（RAG）和大语言模型（LLM）
 
    脚本会写入 `Key.json` 并导出 `DASHSCOPE_API_KEY` 环境变量。
 
+### DashScope Base URL 提醒
+
+- 国内版 DashScope 账号默认使用 `https://dashscope.aliyuncs.com/compatible-mode/v1`，项目在 `functions/llm_utils.py` 已按此配置。
+- 国际版 DashScope 账号需要切换到 `https://dashscope-intl.aliyuncs.com/compatible-mode/v1`，请在同一文件中调整 `OpenAI(..., base_url=...)` 的取值后再运行，否则会出现鉴权失败或连接错误。
+
 ## 构建与读取 TaskFriend RAG 索引
 
 TaskFriend 依赖 LlamaIndex + DashScope Embedding。默认从 `docs/taskfriend` 读取文档，并将索引持久化在 `knowledge_base/taskfriend`（首次使用时自动创建）。
