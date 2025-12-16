@@ -2,16 +2,16 @@
 
 ## 概览
 
-TaskFriend 是一套围绕检索增强生成（RAG）和大语言模型（LLM）工作流的实践型学习环境。项目结合了可执行的 Jupyter Notebook、可复用的 Python 模块、可视化工具和精心整理的数据集，对应 “LMP-C01 LLM Engineer (Professional)” 课程，主角 TaskFriend 专注于任务管理与效率提升场景，并支持替换式 LLM 后端与文档知识库。
+TaskFriend 是一套围绕检索增强生成（RAG）和大语言模型（LLM）工作流的实践型学习环境。项目结合了可执行的 Jupyter Notebook、可复用的 Python 模块、可视化工具和精心整理的数据集，对应 “LLM Engineer Course”（原 “LMP-C01 LLM Engineer (Professional)”）课程，主角 TaskFriend 专注于任务管理与效率提升场景，并支持替换式 LLM 后端与文档知识库。
 
 ## 仓库结构
 
-- `LMP-C01 LLM Engineer (Professional)/taskfriend/`：TaskFriend 核心模块，涵盖聊天循环、上下文管理、RAG 索引编排与评估工具。
-- `LMP-C01 LLM Engineer (Professional)/functions/`：配套 Notebook 的辅助函数，提供绘图、HTML 表格、嵌入可视化、打分和流式 LLM 客户端等能力。
-- `LMP-C01 LLM Engineer (Professional)/docs/taskfriend/`：TaskFriend 使用的 Markdown 知识库，构成 RAG 的原始语料。
-- `LMP-C01 LLM Engineer (Professional)/resources/`：训练集、基准题库、示例脚本等数据资产。
-- `LMP-C01 LLM Engineer (Professional)/config/`：DashScope API Key 加载脚本。
-- `LMP-C01 LLM Engineer (Professional)/*.ipynb`：12 篇课程 Notebook，串联整套实验路径。
+- `LLM-Engineer-Course/taskfriend/`：TaskFriend 核心模块，涵盖聊天循环、上下文管理、RAG 索引编排与评估工具。
+- `LLM-Engineer-Course/functions/`：配套 Notebook 的辅助函数，提供绘图、HTML 表格、嵌入可视化、打分和流式 LLM 客户端等能力。
+- `LLM-Engineer-Course/docs/taskfriend/`：TaskFriend 使用的 Markdown 知识库，构成 RAG 的原始语料。
+- `LLM-Engineer-Course/resources/`：训练集、基准题库、示例脚本等数据资产。
+- `LLM-Engineer-Course/config/`：DashScope API Key 加载脚本。
+- `LLM-Engineer-Course/*.ipynb`：12 篇课程 Notebook，串联整套实验路径。
 - `requirements.txt`：项目依赖列表。
 - `version-20251016.txt`：课程内容的版本标识。
 
@@ -42,7 +42,7 @@ TaskFriend 是一套围绕检索增强生成（RAG）和大语言模型（LLM）
 3. 进入课程目录以确保本地包可解析：
 
    ```powershell
-   Set-Location "LMP-C01 LLM Engineer (Professional)"
+   Set-Location "LLM-Engineer-Course"
    ```
 
 4. 验证关键依赖（`ms-swift` 安装后导入名为 `swift` 的模块）：
@@ -69,7 +69,7 @@ TaskFriend 是一套围绕检索增强生成（RAG）和大语言模型（LLM）
 TaskFriend 依赖 LlamaIndex + DashScope Embedding。默认从 `docs/taskfriend` 读取文档，并将索引持久化在 `knowledge_base/taskfriend`（首次使用时自动创建）。
 
 ```python
-# 在 "LMP-C01 LLM Engineer (Professional)" 目录中执行
+# 在 "LLM-Engineer-Course" 目录中执行
 from taskfriend import rag
 
 # 更新知识库后可重建索引
