@@ -20,11 +20,11 @@ logger = logging.getLogger(__name__)
 from .rag_config import (
     MODEL_EMBEDDING_NAME, MODEL_LLM_NAME,
     PERSIST_PATH, DOCUMENT_PATH, DASHSCOPE_API_BASE,
-    LOGGING_LEVEL
+    LOGGING_LEVEL, DASHSCOPE_BASE_HTTP
 )
 
-# Set global DashScope API URL
-dashscope.base_http_api_url = "https://dashscope-intl.aliyuncs.com/api/v1"
+# Set global DashScope API URL (domestic or international based on config)
+dashscope.base_http_api_url = DASHSCOPE_BASE_HTTP
 
 def get_llm():
     """Get configured LLM instance"""

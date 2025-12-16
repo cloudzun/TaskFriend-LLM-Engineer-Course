@@ -30,9 +30,21 @@ def get_qwen_stream_response(query, system_prompt="", temperature=0.5, top_p=0.9
 
         for chunk in response:
             token = chunk.choices[0].delta.content
-            if token:
-                content += token
-                print(token, end="", flush=True)  # ←←← Print each token immediately
+            if not token:
+                continue
+
+            # Prevent duplicate fragments by only printing the incremental suffix.
+            max_overlap = min(len(content), len(token))
+            overlap = 0
+            for i in range(max_overlap, 0, -1):
+                if content[-i:] == token[:i]:
+                    overlap = i
+                    break
+
+            incremental = token[overlap:]
+            if incremental:
+                print(incremental, end="", flush=True)
+                content += incremental
 
         elapsed = time.time() - start
         print(f"\n⏱️  Total time: {elapsed:.2f}s\n")
