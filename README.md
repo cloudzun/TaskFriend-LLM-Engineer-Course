@@ -32,12 +32,35 @@ TaskFriend 是一套围绕检索增强生成（RAG）和大语言模型（LLM）
    & .\taskfriend\Scripts\Activate.ps1
    ```
 
-2. 在仓库根目录安装依赖（先升级 pip，再安装 requirements）：
-
-   ```powershell
-   python -m pip install --upgrade pip
-   pip install -r requirements.txt
+   ```bash
+   python3.12 -m venv taskfriend
+   source taskfriend/bin/activate
    ```
+
+2. 在仓库根目录安装依赖，优先使用 CPU 版 torch（避免下载 CUDA 包）：
+
+    - Windows（PowerShell）：
+       ```powershell
+       python -m pip install --upgrade pip
+       pip install --no-cache-dir --extra-index-url https://download.pytorch.org/whl/cpu torch==2.3.1
+       pip install --no-cache-dir -r requirements.txt
+       ```
+
+    - macOS / Linux：
+       ```bash
+       python -m pip install --upgrade pip
+       pip install --no-cache-dir --extra-index-url https://download.pytorch.org/whl/cpu torch==2.3.1
+       pip install --no-cache-dir -r requirements.txt
+       ```
+
+    - 国内源（可选，需信任主机）：
+       ```bash
+       PIP_INDEX_URL=https://pypi.tuna.tsinghua.edu.cn/simple \
+       pip install --no-cache-dir --extra-index-url https://download.pytorch.org/whl/cpu torch==2.3.1
+       PIP_INDEX_URL=https://pypi.tuna.tsinghua.edu.cn/simple \
+       pip install --no-cache-dir -r requirements.txt
+       # 或添加 --trusted-host pypi.tuna.tsinghua.edu.cn 以避免证书拦截
+       ```
 
 3. 进入课程目录以确保本地包可解析：
 
@@ -45,11 +68,23 @@ TaskFriend 是一套围绕检索增强生成（RAG）和大语言模型（LLM）
    Set-Location "LLM-Engineer-Course"
    ```
 
+   ```bash
+   cd LLM-Engineer-Course
+   ```
+
+   > 说明：后续命令默认在 `LLM-Engineer-Course/` 目录内执行。
+
 4. 验证关键依赖（`ms-swift` 安装后导入名为 `swift` 的模块）：
 
    ```powershell
    python -c "import swift, ragas, torch"
    ```
+
+   ```bash
+   python -c "import swift, ragas, torch"
+   ```
+
+   > 如因手动升级导致 `numpy` 升至 2.x 出现 ImportError，可回退：`pip install "numpy<2"`。
 
 5. 配置 DashScope API Key（首次或需要轮换时执行）：
 
@@ -57,12 +92,35 @@ TaskFriend 是一套围绕检索增强生成（RAG）和大语言模型（LLM）
    python config\load_key.py
    ```
 
+   ```bash
+   python config/load_key.py
+   ```
+
    脚本会写入 `Key.json` 并导出 `DASHSCOPE_API_KEY` 环境变量。
+
+   也可直接手工设置：
+   ```powershell
+   setx DASHSCOPE_API_KEY "<your_key>"
+   ```
+   ```bash
+   export DASHSCOPE_API_KEY="<your_key>"
+   ```
+
+### 在 Jupyter/VS Code 选择内核
+
+- 启动 Notebook 时，在内核列表中选择虚拟环境 `taskfriend`（VS Code: 右上角内核选择器；Jupyter: Kernel → Change Kernel）。
+- 若未显示，先激活 venv 后运行 `python -m ipykernel install --user --name taskfriend` 再重启 IDE。
 
 ### DashScope Base URL 提醒
 
 - 国内版 DashScope 账号默认使用 `https://dashscope.aliyuncs.com/compatible-mode/v1`，项目在 `functions/llm_utils.py` 已按此配置。
 - 国际版 DashScope 账号需要切换到 `https://dashscope-intl.aliyuncs.com/compatible-mode/v1`，请在同一文件中调整 `OpenAI(..., base_url=...)` 的取值后再运行，否则会出现鉴权失败或连接错误。
+
+### DashScope 常见故障排查
+
+- 401 InvalidApiKey：确认 Key 正确且与所用域名（国内/国际）匹配；重新 `export/setx` 后重启终端/内核。
+- 429 限流：降低并发，增加重试或 sleep；批量评估时加节流。
+- 连接/超时：检查代理/防火墙；必要时在同网络用 `curl https://dashscope.aliyuncs.com` 验证连通。
 
 ## 构建与读取 TaskFriend RAG 索引
 
@@ -170,3 +228,4 @@ print(scorecard)
 - 每次更新 `docs/taskfriend` 后请执行 `rag.reindex()` 刷新向量库。
 - DashScope 在高并发时可能返回 429 限速，可在自动化评估时加上重试逻辑。
 - 与 Notebook 配套的核心依赖（LlamaIndex、LangChain、Ragas 等）迭代频繁，建议保持 `requirements.txt` 指定的版本以避免 API 变更。
+ - Windows 下 `python` 与 `py -3.12` 均可；macOS/Linux 请使用 `python3.12`/`python3`。
