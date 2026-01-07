@@ -107,12 +107,16 @@ TaskFriend 是一套围绕检索增强生成（RAG）和大语言模型（LLM）
    脚本会写入 `Key.json` 并导出 `DASHSCOPE_API_KEY` 环境变量。
 
    也可直接手工设置：
-   ```powershell
-   setx DASHSCOPE_API_KEY "<your_key>"
-   ```
-   ```bash
-   export DASHSCOPE_API_KEY="<your_key>"
-   ```
+
+      - Windows（PowerShell）：
+         ```powershell
+         setx DASHSCOPE_API_KEY "<your_key>"
+         ```
+
+      - macOS / Linux：
+         ```bash
+         export DASHSCOPE_API_KEY="<your_key>"
+         ```
 
 ### 在 Jupyter/VS Code 选择内核
 
