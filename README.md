@@ -191,18 +191,18 @@ print(scorecard)
 
 12 篇 Notebook 构成由浅入深的学习旅程，相互衔接如下：
 
-1. **00 Setting Up the Environment**：完成本地/云端环境配置、依赖安装与 DashScope Key 管理，为后续实验打下基础。
-2. **01 The LLM Architecture**：回顾 LLM 基础原理、推理流程与部署形态，明确工具链为何物。
-3. **02 Creating Basic LLM Applications**：基于 00 配好的环境，实现最小可用的问答/对话应用，验证 API 调用链路。
-4. **03 Bridging Knowledge with RAG**：在 02 的应用上增加文档检索与向量索引，实现依赖知识库的问答。
-5. **04 Prompt Engineering for Success**：继续使用同一应用场景，系统梳理提示词设计与调优技巧，与 02/03 的代码形成闭环。
-6. **05 Evaluating RAG Performance**：引入 Ragas 等评估方法，量化 03 中 RAG 流水线的效果，并为 06 的优化提供基线。
-7. **06 RAG Optimization Techniques**：在 05 的指标基础上，尝试检索召回、重排、缓存等优化手段，对 RAG 作进一步提升。
-8. **07 Building Agentic AI Applications**：将 RAG 能力扩展到多工具/多阶段 Agent，复用前面构建的任务与评估模块。
-9. **08 Improving LLM Performance Through Fine-tuning**：探索微调途径，将 02/03 的应用接入调优后的模型，与未调优版本对比。
-10. **09 Deploying & Serving Your LLM App**：基于前面完成的应用，讨论部署、监控与扩缩容策略，与 07/08 的成果结合。
-11. **10 Best Practices for Developing & Deploying LLM Apps**：总结端到端流程的工程实践，包括团队协作、CI/CD、指标治理。
-12. **11 Building a Secure, Resilient AI Assistant**：在 09 的部署方案之上，强化安全、防护与高可用设计，形成全流程闭环。
+- **00 Setting Up the Environment**：完成本地/云端环境配置、依赖安装与 DashScope Key 管理，为后续实验打下基础。
+- **01 The LLM Architecture**：回顾 LLM 基础原理、推理流程与部署形态，明确工具链为何物。
+- **02 Creating Basic LLM Applications**：基于 00 配好的环境，实现最小可用的问答/对话应用，验证 API 调用链路。
+- **03 Bridging Knowledge with RAG**：在 02 的应用上增加文档检索与向量索引，实现依赖知识库的问答。
+- **04 Prompt Engineering for Success**：继续使用同一应用场景，系统梳理提示词设计与调优技巧，与 02/03 的代码形成闭环。
+- **05 Evaluating RAG Performance**：引入 Ragas 等评估方法，量化 03 中 RAG 流水线的效果，并为 06 的优化提供基线。
+- **06 RAG Optimization Techniques**：在 05 的指标基础上，尝试检索召回、重排、缓存等优化手段，对 RAG 作进一步提升。
+- **07 Building Agentic AI Applications**：将 RAG 能力扩展到多工具/多阶段 Agent，复用前面构建的任务与评估模块。
+- **08 Improving LLM Performance Through Fine-tuning**：探索微调途径，将 02/03 的应用接入调优后的模型，与未调优版本对比。
+- **09 Deploying & Serving Your LLM App**：基于前面完成的应用，讨论部署、监控与扩缩容策略，与 07/08 的成果结合。
+- **10 Best Practices for Developing & Deploying LLM Apps**：总结端到端流程的工程实践，包括团队协作、CI/CD、指标治理。
+- **11 Building a Secure, Resilient AI Assistant**：在 09 的部署方案之上，强化安全、防护与高可用设计，形成全流程闭环。
 
 整体来看，00–02 关注基础搭建，03–06 聚焦 RAG 构建与评估，07–09 延伸至 Agent 与上线阶段，10–11 则将工程规范与安全韧性纳入体系，确保学生能够贯通从原型到生产的完整链路。
 
