@@ -25,17 +25,19 @@ TaskFriend 是一套围绕检索增强生成（RAG）和大语言模型（LLM）
 
 1. 创建虚拟环境（建议使用 Python 3.12，以满足 `ms-swift` 对 `numpy<2` 的依赖）：
 
-   ```powershell
-   py -3.12 -m venv taskfriend
-   # 若提示 “running scripts is disabled”，请先执行：
-   Set-ExecutionPolicy -Scope Process -ExecutionPolicy RemoteSigned
-   & .\taskfriend\Scripts\Activate.ps1
-   ```
+      - Windows（PowerShell）：在 PowerShell 终端执行
+         ```powershell
+         py -3.12 -m venv taskfriend
+         # 若提示 “running scripts is disabled”，请先执行：
+         Set-ExecutionPolicy -Scope Process -ExecutionPolicy RemoteSigned
+         & .\taskfriend\Scripts\Activate.ps1
+         ```
 
-   ```bash
-   python3.12 -m venv taskfriend
-   source taskfriend/bin/activate
-   ```
+      - macOS / Linux：在 Bash/zsh 终端执行
+         ```bash
+         python3.12 -m venv taskfriend
+         source taskfriend/bin/activate
+         ```
 
 2. 在仓库根目录安装依赖，优先使用 CPU 版 torch（避免下载 CUDA 包）：
 
@@ -64,37 +66,43 @@ TaskFriend 是一套围绕检索增强生成（RAG）和大语言模型（LLM）
 
 3. 进入课程目录以确保本地包可解析：
 
-   ```powershell
-   Set-Location "LLM-Engineer-Course"
-   ```
+      - Windows（PowerShell）：在 PowerShell 终端执行
+         ```powershell
+         Set-Location "LLM-Engineer-Course"
+         ```
 
-   ```bash
-   cd LLM-Engineer-Course
-   ```
+      - macOS / Linux：在 Bash/zsh 终端执行
+         ```bash
+         cd LLM-Engineer-Course
+         ```
 
    > 说明：后续命令默认在 `LLM-Engineer-Course/` 目录内执行。
 
 4. 验证关键依赖（`ms-swift` 安装后导入名为 `swift` 的模块）：
 
-   ```powershell
-   python -c "import swift, ragas, torch"
-   ```
+      - Windows（PowerShell）：
+         ```powershell
+         python -c "import swift, ragas, torch"
+         ```
 
-   ```bash
-   python -c "import swift, ragas, torch"
-   ```
+      - macOS / Linux：
+         ```bash
+         python -c "import swift, ragas, torch"
+         ```
 
    > 如因手动升级导致 `numpy` 升至 2.x 出现 ImportError，可回退：`pip install "numpy<2"`。
 
 5. 配置 DashScope API Key（首次或需要轮换时执行）：
 
-   ```powershell
-   python config\load_key.py
-   ```
+      - Windows（PowerShell）：
+         ```powershell
+         python config\load_key.py
+         ```
 
-   ```bash
-   python config/load_key.py
-   ```
+      - macOS / Linux：
+         ```bash
+         python config/load_key.py
+         ```
 
    脚本会写入 `Key.json` 并导出 `DASHSCOPE_API_KEY` 环境变量。
 
